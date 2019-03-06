@@ -36,4 +36,5 @@ inc/
 
 #python notebooks
 .DS_Store
+.ipynb_checkpoints
 
