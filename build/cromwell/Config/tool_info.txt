@@ -1,0 +1,51 @@
+#   [lanier4@iforge DEL]$ cat Config/tool_info.txt
+
+CutAdapt="/usr/local/apps/bioapps/python/Python-3.6.1/bin"
+
+TrimSeqScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/trim_sequences.sh"
+CutAdaptThreads="8"
+
+#					Propritary?
+Sentieon="/usr/local/apps/bioapps/sentieon/sentieon-genomics-201808.01"
+SentieonThreads="40"
+#					Propritary?
+Strelka="/usr/local/apps/bioapps/strelka/strelka-2.9.2.centos6_x86_64/bin/configureStrelkaGermlineWorkflow.py"
+StrelkaThreads="40"
+#					Propritary?
+Mutect="/usr/local/apps/bioapps/gatk/gatk-3.7.0/GenomeAnalysisTK.jar"
+MutectThreads="40"
+
+
+BashPreamble="/projects/bioinformatics/DEL/MayomicsVC/src/shell/shell_preamble.sh"
+BashSharedFunctions="/projects/bioinformatics/DEL/MayomicsVC/src/shell/shared_functions.sh"
+AlignmentScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/alignment.sh"
+MergeBamScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/merge_bams.sh"
+DedupScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/dedup.sh"
+RealignmentScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/realignment.sh"
+BqsrScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/bqsr.sh"
+HaplotyperScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/haplotyper.sh"
+VqsrScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/vqsr.sh"
+DeliveryAlignment_Script="/projects/bioinformatics/DEL/MayomicsVC/src/shell/deliver_alignment.sh"
+DeliveryHaplotyperVC_Script="/projects/bioinformatics/DEL/MayomicsVC/src/shell/deliver_haplotyperVC.sh"
+DeliverySomaticVC_Script="/projects/bioinformatics/DEL/MayomicsVC/src/shell/deliver_somaticVC.sh"
+
+StrelkaScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/strelka.sh"
+MutectScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/mutect.sh"
+MergeSomaticVcfScript="/projects/bioinformatics/DEL/MayomicsVC/src/shell/merge_somatic_vcf.sh"
+
+WorkflowJson="/projects/bioinformatics/DEL/Jsons/GermlineMasterWorkflow.FilledIn.json"
+
+AlignEnvProfile="/projects/bioinformatics/DEL/Config/AlignEnvProfile.file"
+MergeBamEnvProfile="/projects/bioinformatics/DEL/Config/MergeBamEnvProfile.file"
+DedupEnvProfile="/projects/bioinformatics/DEL/Config/DedupEnvProfile.file"
+TrimEnvProfile="/projects/bioinformatics/DEL/Config/TrimEnvProfile.file"
+BqsrEnvProfile="/projects/bioinformatics/DEL/Config/BqsrEnvProfile.file"
+RealignEnvProfile="/projects/bioinformatics/DEL/Config/RealignEnvProfile.file"
+HaplotyperEnvProfile="/projects/bioinformatics/DEL/Config/HaplotyperEnvProfile.file"
+VqsrEnvProfile="/projects/bioinformatics/DEL/Config/VqsrEnvProfile.file"
+StrelkaEnvProfile="/projects/bioinformatics/DEL/Config/StrelkaEnvProfile.file"
+MutectEnvProfile="/projects/bioinformatics/DEL/Config/MutectEnvProfile.file"
+MergeSomaticVcfEnvProfile="/projects/bioinformatics/DEL/Config/MergeSomaticVcfEnvProfile.file"
+HaplotyperVCFSourceField="/projects/bioinformatics/DEL/Config/HaplotyperVCFSourceField.file"
+
+#   [lanier4@iforge DEL]$ 

@@ -1,0 +1,53 @@
+# [lanier4@iforge DEL]$ cat Config/memory_info.txt
+#### SCRIPTS MEMORY ARGUMENTS
+
+
+####################
+#### alignment and BAM formatting jobs
+##################
+TrimHardMemLimit="100G"
+TrimSoftMemLimit="100G"
+
+AlignHardMemLimit="100G"
+AlignSoftMemLimit="100G"
+
+DedupHardMemLimit="100G"
+DedupSoftMemLimit="100G"
+
+MergeHardMemLimit="100G"
+MergeSoftMemLimit="100G"
+
+
+#################
+### realignment and recalibration and BAM for visualization
+##################
+RealignHardMemLimit="100G"
+RealignSoftMemLimit="100G"
+
+BqsrHardMemLimit="100G"
+BqsrSoftMemLimit="100G"
+
+
+########################
+### variant calling and VCF manipulation jobs
+#######################
+VqsrHardMemLimit="100G"
+VqsrSoftMemLimit="100G"
+
+HaplotyperHardMemLimit="100G"
+HaplotyperSoftMemLimit="100G"
+
+#######################
+### manta call
+#######################
+MantaSoftMemLimit="100G"
+MantaHardMemLimit="100G"
+
+#Manta
+#TumorBams
+#MantaScript
+#TumorBais
+#NormalBais
+#NormalBams
+
+# [lanier4@iforge DEL]$ 

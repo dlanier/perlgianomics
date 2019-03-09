@@ -1,0 +1,86 @@
+# [lanier4@iforge DEL]$ cat Config/run_info.txt
+# Post upload for containerNotes:
+#	1) changed ""' to " before and after 5 magic strings
+
+#	Suspected placeholder only variables
+Platform="ILLUMINA"
+Library="fake_lib"
+CenterName="some_seq_center"
+#PlatformUnit="FLOWCELL_BARCODE.LANE.SAMPLE_BARCODE"
+PlatformUnit="FLOWCELL_BARCODE.LANE.SAMPLE_BARCODE,FLOWCELL_BARCODE.LANE.SAMPLE_BARCODE"
+
+
+ChunkSizeInBases="10000000"
+
+DebugMode=""
+
+PairedEnd="true"
+Trimming="true"
+MarkDuplicates="true"
+Bqsr="true"
+Vqsr="true"
+MantaThreads="4"
+
+
+InputReads="/projects/bioinformatics/DEL/Inputs/WGS_chr1_5X_E0.005_L1_read1.fastq.gz,/projects/bioinformatics/DEL/Inputs/WGS_chr1_5X_E0.005_L1_read2.fastq.gz"
+
+NormalInputRead1="/projects/bioinformatics/DEL/Inputs/WGS_chr1_5X_E0.005_L1_read1.fastq.gz,/projects/bioinformatics/DEL/Inputs/WGS_chr1_5X_E0.005_L2_read1.fastq.gz"
+NormalInputRead2="/projects/bioinformatics/DEL/Inputs/WGS_chr1_5X_E0.005_L1_read2.fastq.gz,/projects/bioinformatics/DEL/Inputs/WGS_chr1_5X_E0.005_L2_read2.fastq.gz"
+
+Adapters="/projects/bioinformatics/DEL/Inputs/TruSeqAdaptors.fasta"
+
+Ref="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta"
+RefAnn="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.ann"
+RefSa="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.sa"
+RefBwt="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.bwt"
+RefPac="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.pac"
+RefAmb="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.amb"
+RefFai="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.fai"
+#[lanier4@iforge Jsons]$ ls -ltr /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_*
+#-rw-r-----  9 kkendig2 bany 3217347004 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.bwt
+#-rw-r-----  9 kkendig2 bany      20199 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.amb
+#-rw-r-----  4 kkendig2 bany     581712 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.dict
+#-rw-r-----  9 kkendig2 bany  804336731 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.pac
+#-rw-r-----  1 kkendig2 bany  890202736 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.gz
+#-rw-r----- 13 kkendig2 bany     160928 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.fai
+#-rw-r-----  9 kkendig2 bany     455474 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.ann
+#-rw-r-----  9 kkendig2 bany 1608673512 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.sa
+#-rw-r-----  1 kkendig2 bany     487553 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta.64.alt
+#-rw-r----- 21 kkendig2 bany 3249912778 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Homo_sapiens_assembly38.fasta
+
+
+BqsrKnownSites="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Mills_and_1000G_gold_standard.indels.hg38.vcf,/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/dbsnp_138.hg38.vcf"
+RealignmentKnownSites="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Mills_and_1000G_gold_standard.indels.hg38.vcf"
+#[lanier4@iforge Jsons]$ ls -ltr /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/*.vcf 
+#-rw-r----- 1 kkendig2 bany    90155308 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Mills_and_1000G_gold_standard.indels.hg38.vcf
+#-rw-r----- 1 kkendig2 bany 10950827213 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/dbsnp_138.hg38.vcf
+
+DBSNP="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/dbsnp_138.hg38.vcf"
+DBSNPIdx="/projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/dbsnp_138.hg38.vcf.idx"
+#[lanier4@iforge Jsons]$ ls -ltr /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/*.idx
+#-rw-r----- 1 kkendig2 bany 1015995 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Mills_and_1000G_gold_standard.indels.hg38.vcf.idx
+#-rw-r----- 1 kkendig2 bany 1662831 Aug 13 10:19 /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/dbsnp_138.hg38.vcf.idx
+
+VqsrSnpResourceString="--resource /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/1000G_phase1.snps.high_confidence.hg38.vcf.gz --resource_param 1000G,known=false,training=true,truth=false,prior=10.0 --resource /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/1000G_omni2.5.hg38.vcf.gz --resource_param omni,known=false,training=true,truth=false,prior=12.0 --resource /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/dbsnp_138.hg38.vcf --resource_param dbsnp,known=true,training=false,truth=false,prior=2.0 --resource /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/hapmap_3.3.hg38.vcf.gz --resource_param hapmap,known=false,training=true,truth=true,prior=15.0"
+#[lanier4@iforge Jsons]$ ls -ltr /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/*.gz
+#-rw-rw-r-- 1 mkendzi2 aaa   53238342 Oct  3  2017 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/1000G_omni2.5.hg38.vcf.gz
+#-rw-rw-r-- 1 mkendzi2 aaa 3215686850 Oct  3  2017 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/dbsnp_144.hg38.vcf.gz
+#-rw-rw-r-- 1 mkendzi2 aaa   62043448 Oct  3  2017 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/hapmap_3.3.hg38.vcf.gz
+#-rw-rw-r-- 1 mkendzi2 aaa  179601790 Oct  3  2017 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/hapmap_3.3_grch38_pop_stratified_af.vcf.gz
+#-rw-rw-r-- 1 mkendzi2 aaa    3053999 Oct  3  2017 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/Axiom_Exome_Plus.genotypes.all_populations.poly.hg38.vcf.gz
+#-rw-rw-r-- 1 mkendzi2 aaa 1888262073 Oct  3  2017 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/1000G_phase1.snps.high_confidence.hg38.vcf.gz
+#-rw-rw-r-- 1 mkendzi2 aaa  890202736 Mar  6  2018 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/Homo_sapiens_assembly38.fasta.gz
+#-rw-rw-r-- 1 mkendzi2 aaa 1475469225 Mar 16  2018 /projects/bioinformatics/DataPacks/human/gatk_bundle_Oct_2017/gatk_bundle_hg38/dbsnp_138.hg38.vcf.gz
+
+VqsrIndelResourceString="--resource /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/dbsnp_138.hg38.vcf --resource_param dbsnp,known=true,training=false,truth=false,prior=2.0 --resource /projects/mgc/Project_1/MayomicsVC_MayoTesting/Reference/Mills_and_1000G_gold_standard.indels.hg38.vcf --resource_param Mills,known=false,training=true,truth=true,prior=12.0"
+
+HaplotyperExtraOptionsString="--emit_mode variant --gq_bands 1-60,60-99/19,99 --min_base_qual 10 --pcr_indel_model CONSERVATIVE --phasing 1 --ploidy 2 --prune_factor 2"
+
+BWAExtraOptionsString="-M"
+
+AnnotateText="--annotation DP --annotation QD --annotation FS --annotation SOR --annotation MQ --annotation MQRankSum --annotation ReadPosRankSum"
+
+DeliveryFolder_Alignment="/projects/bioinformatics/DEL/Delivery/Alignment"
+DeliveryFolder_HaplotyperVC="/projects/bioinformatics/DEL/Delivery/HaplotyperVC"
+
+# [lanier4@iforge DEL]$ 
