@@ -49,12 +49,12 @@ WORKDIR ${SRC_LOC}
 # pandoc - LaTeX >> pdf
 # http:http://pandoc.org/installing.html
 
-# docker create --name=cranky_container -p 8888:8888 -p 8000:8000 -v `pwd`:/home/tmp_usr/run_dir -i aka1spanky/ncsa:devwdlV02 
-# docker start cranky_container
-# docker exec -it cranky_container jupyter notebook --no-browser --port=8888 --ip=0.0.0.0
+# docker create --name=cromwell_container -p 8888:8888 -p 8000:8000 -v `pwd`:/home/tmp_usr/run_dir -i aka1spanky/ncsa:devwdlV02 
+# docker start cromwell_container
+# docker exec -it cromwell_container jupyter notebook --no-browser --port=8888 --ip=0.0.0.0
 
-# docker exec -it cranky_container jupyter notebook --generate-config
-# docker exec -it cranky_container jupyter notebook password
+# docker exec -it cromwell_container jupyter notebook --generate-config
+# docker exec -it cromwell_container jupyter notebook password
 
 # --- add config first else:
 #FileNotFoundError: [Errno 2] No such file or directory: '/home/ncsausr/.jupyter/jupyter_notebook_config.json'
