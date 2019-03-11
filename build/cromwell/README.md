@@ -5,13 +5,13 @@
 Running cromwell and womtools from a container.
 
 Pull and start the current docker image built from this directory's Dockerfile: <br>
-`docker pull aka1spanky/ncsa:devwdlV04`
+>$ `docker pull aka1spanky/ncsa:devwdlV04`
 
 Create a container from the image with your current directory mounted and port 8888 connected: <br>
-```docker create --name=cromwell_container -p 8888:8888 -v `pwd`:/home/tmp_usr/run_dir -i aka1spanky/ncsa:devwdlV04```
+>$ ```docker create --name=cromwell_container -p 8888:8888 -v `pwd`:/home/tmp_usr/run_dir -i aka1spanky/ncsa:devwdlV04``` <br>
 
 Start the container: <br>
-`docker start cromwell_container`
+>$ `docker start cromwell_container`
 
 You may run commands within the container by preceeding them with "docker exec -it container_name": <br>
 
@@ -34,4 +34,5 @@ See the wiki for detailed notebook directions, or start the jupyter notebook pri
 You will be prompted for a password, after setting it start the jupyter notebook server. <br>
 >$ `docker exec -it cromwell_container jupyter notebook --no-browser --port=8888 --ip=0.0.0.0` <br>
 paste this into your browser window: <br>
-```http://localhost:8888```
+```http://localhost:8888``` <br>
+Enter your password in the login page and the container home directory appears in the jupyter file browser in your web browser. <br>
