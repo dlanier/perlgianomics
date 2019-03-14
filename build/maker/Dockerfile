@@ -1,45 +1,50 @@
 FROM ubuntu:14.04
+LABEL dlanier="lanier4@illinois.edu"
+# hints - see various docker files in:
+# https://github.com/GenomicParisCentre/dockerfiles
+# and all of knoweng:
+# https://github.com/KnowEnG/Samples_Clustering_Pipeline/blob/master/build/docker/Dockerfile
 
-# Modified from:
-# https://hub.docker.com/r/continuumio/anaconda3/dockerfile
-# change linus version
-#  $ docker build . -t continuumio/anaconda3:latest -t continuumio/anaconda3:5.3.0
-#  $ docker run --rm -it continuumio/anaconda3:latest /bin/bash
-#  $ docker push continuumio/anaconda3:latest
-#  $ docker push continuumio/anaconda3:5.3.0
+#                  install basic utilities
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get update && apt-get install -y make vim git wget perl-doc
 
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /opt/conda/bin:$PATH
+RUN apt-get install --yes build-essential gcc-multilib apt-utils perl expat libexpat-dev 
 
-RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
-    libglib2.0-0 libxext6 libsm6 libxrender1 \
-    git mercurial subversion
+RUN apt-get install -y cpanminus
 
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O ~/anaconda.sh && \
-    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
-    rm ~/anaconda.sh && \
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
+RUN cpanm CPAN::Meta readline Term::ReadKey YAML Digest::SHA Module::Build ExtUtils::MakeMaker Test::More Data::Stag Config::Simple Statistics::Lite Statistics::Descriptive 
+
+RUN apt-get install --yes libarchive-zip-perl
+
+# Install related DB modules
+RUN apt-get install --yes libdbd-mysql libdbd-mysql-perl libdbd-pgsql
+
+# Install GD
+RUN apt-get remove --yes libgd-gd2-perl
+RUN apt-get install --yes libgd2-noxpm-dev
+
+RUN cpanm GD GD::Graph GD::Graph::smoothlines 
+
+# BioPerl dependancies
+RUN apt-get install --yes libpixman-1-0 libpixman-1-dev graphviz libxml-parser-perl libsoap-lite-perl 
+
+RUN cpanm Test::Most Algorithm::Munkres Array::Compare Clone PostScript::TextBlock SVG SVG::Graph Set::Scalar Sort::Naturally Graph GraphViz HTML::TableExtract Convert::Binary::C Math::Random Error Spreadsheet::ParseExcel XML::Parser::PerlSAX XML::SAX::Writer XML::Twig XML::Writer
+
+RUN apt-get install -y libxml-libxml-perl libxml-dom-xpath-perl libxml-libxml-simple-perl libxml-dom-perl
+
+#                  installs perl 5.18
+RUN cpanm -v CJFIELDS/BioPerl-1.6.924.tar.gz
+RUN cpanm Bio::Perl
+
+RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-x64-linux.tar.gz
+RUN tar zxvpf ncbi-blast-2.8.1+-x64-linux.tar.gz
+# export PATH=$PATH:$HOME/ncbi-blast-2.8.1+/bin
+ENV BLAST_PATH /ncbi-blast-2.8.1+/bin
+
+RUN wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz
 
 
 
-#RUN apt-get install -y curl grep sed dpkg && \
-#    TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \
-#    curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \
-#    dpkg -i tini.deb && \
-#    rm tini.deb && \
-#    apt-get clean
-
-
-RUN conda config --add channels defaults
-RUN conda config --add channels bioconda
-RUN conda config --add channels conda-forge
-
-RUN conda install maker
-RUN conda update maker
-
-
-#ENTRYPOINT [ "/usr/bin/tini", "--" ]
-#CMD [ "/bin/bash" ]
 
