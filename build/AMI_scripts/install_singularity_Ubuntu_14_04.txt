@@ -1,0 +1,16 @@
+#! /bin/bash
+
+apt-get update
+apt-get install build-essential
+apt-get install -y vim python-minimal libarchive-dev python3-pip git libblas-dev liblapack-dev libatlas-base-dev gfortran libfreetype6-dev libxft-dev
+
+cd /
+wget https://github.com/singularityware/singularity/releases/download/2.5.2/singularity-2.5.2.tar.gz
+tar xvf singularity-2.5.2.tar.gz
+cd singularity-2.5.2/
+./configure --prefix=/usr/local
+make
+make install
+
+cd ~
+which singularity
