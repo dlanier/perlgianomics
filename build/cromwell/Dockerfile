@@ -34,7 +34,11 @@ ENV SRC_LOC /home
 # Example: Clone from github -- removes repo root name this way & allows local nameing for src
 # RUN git clone https://github.com/KnowEnG/Samples_Clustering_Pipeline.git ${SRC_LOC} 
 
-# add admin user - prevent running as root
+
+#  add admin user - prevent running as root
+#	https://container-solutions.com/is-docker-safe-for-production/ 
+# 	https://stackoverflow.com/questions/27701930/add-user-to-docker-container
+#	RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 ubuntu
 RUN adduser --disabled-login --gecos "" ncsauser; echo "ncsauser:ncsauser" | chpasswd
 RUN usermod -aG sudo ncsauser
 USER ncsauser
