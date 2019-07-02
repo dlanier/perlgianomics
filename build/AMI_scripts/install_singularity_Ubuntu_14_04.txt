@@ -14,3 +14,21 @@ make install
 
 cd ~
 which singularity
+
+
+
+#####  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  linux - docker no need sudo  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# https://ncsa.github.io/containers-on-bw/02-docker/index.html
+
+sudo groupadd docker         # Create 'docker' group
+sudo gpasswd -a $USER docker # Add current user to the group
+sudo service docker restart  # Restart Docker daemon
+exit                         # Log out
+
+
+				BW
+chug running jupyter notebook
+/u/sciteam/chug/anaconda3/bin/python /u/sciteam/chug/anaconda3/bin/jupyter-notebook --no-browser --port=7218
+
+ssh -l tra220 bwbay.ncsa.illinois.edu
+
