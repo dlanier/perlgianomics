@@ -1,7 +1,9 @@
 FROM ubuntu:14.04
 LABEL dlanier="lanier4@illinois.edu"
-# building on this "dockerfile" repo to install maker:
+# hints - see various docker files in:
 # https://github.com/GenomicParisCentre/dockerfiles
+# and all of knoweng:
+# https://github.com/KnowEnG/Samples_Clustering_Pipeline/blob/master/build/docker/Dockerfile
 
 #                  install basic utilities
 RUN apt-get update
@@ -32,6 +34,17 @@ RUN cpanm Test::Most Algorithm::Munkres Array::Compare Clone PostScript::TextBlo
 
 RUN apt-get install -y libxml-libxml-perl libxml-dom-xpath-perl libxml-libxml-simple-perl libxml-dom-perl
 
-#                  install perl
+#                  installs perl 5.18
 RUN cpanm -v CJFIELDS/BioPerl-1.6.924.tar.gz
+RUN cpanm Bio::Perl
+
+RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-x64-linux.tar.gz
+RUN tar zxvpf ncbi-blast-2.8.1+-x64-linux.tar.gz
+# export PATH=$PATH:$HOME/ncbi-blast-2.8.1+/bin
+ENV BLAST_PATH /ncbi-blast-2.8.1+/bin
+
+RUN wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz
+
+
+
 
